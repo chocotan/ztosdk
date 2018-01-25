@@ -29,7 +29,7 @@ public class ZtoApiClient {
      * 其中，commonOrder即为 apiName
      * <p>
      * 当请求被中通网关拦截并返回异常时(签名错误、未传必须参数等)，会抛出ZtoException的子类
-     * <p/>
+     *
      *
      * @param apiName api名字
      * @param json    请求的json字符串，作为请求body传给中通
@@ -56,7 +56,6 @@ public class ZtoApiClient {
      * 其中，commonOrder即为 apiName
      * <p>
      * 当请求被中通网关拦截并返回异常时(签名错误、未传必须参数等)，会抛出ZtoException的子类
-     * <p/>
      *
      * @param apiName api名字
      * @param params  请求的参数map，作为请求body传给中通
@@ -81,13 +80,13 @@ public class ZtoApiClient {
      * 调用中通Service（表单提交方式），此方法适用于这样的中通url: http://japi.zto.cn/zto/api_utf8/commonOrder<br>
      * <p>
      * 其中，commonOrder即为 serviceName
-     * <p>
+     *
      * <p>
      * 当请求被中通网关拦截并返回异常时(签名错误、未传必须参数等)，会抛出ZtoException的子类
-     * <p/>
      *
      * @param serviceName service名字
      * @param msgType     这个service的msgType，如果文档中没有写msgType，则传null
+     * @param data        data参数
      * @return 中通接口的返回值
      * @throws ZtoException 当返回值出现异常时，抛出异常
      * @deprecated 该调用方法已过时
@@ -111,9 +110,9 @@ public class ZtoApiClient {
      * 调用中通msgType（表单提交方式），此方法适用于这样的中通url: http://japi.zto.cn/gateway.do<br>
      * <p>
      * 当请求被中通网关拦截并返回异常时(签名错误、未传必须参数等)，会抛出ZtoException的子类
-     * <p/>
      *
      * @param msgType 这个service的msgType，如果文档中没有写msgType，则传null
+     * @param data    data参数
      * @return 中通接口的返回值
      * @throws ZtoException 当返回值出现异常时，抛出异常
      * @deprecated 该调用方法已过时
