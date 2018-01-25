@@ -30,7 +30,6 @@ public class ZtoApiClient {
      * <p>
      * 当请求被中通网关拦截并返回异常时(签名错误、未传必须参数等)，会抛出ZtoException的子类
      *
-     *
      * @param apiName api名字
      * @param json    请求的json字符串，作为请求body传给中通
      * @return 中通API的返回值
@@ -67,7 +66,7 @@ public class ZtoApiClient {
         String responseStr = null;
         try {
             Map<String, String> map = buildHeaderMap(params);
-            response = httpClientUtil.post(account.getUrl() + apiName, map, params);
+            response = httpClientUtil.post(cleanUrl(cleanUrl(account.getUrl())) + apiName, map, params);
             responseStr = response.body().string();
         } catch (Exception e) {
             throw new ZtoConnectionException(e);
@@ -75,12 +74,20 @@ public class ZtoApiClient {
         return dealApiResponse(response, responseStr);
     }
 
+    // 给url最后加上 /
+    private String cleanUrl(String url) {
+        if (!url.endsWith("/")) {
+            return url + "/";
+        }
+        return url;
+    }
+
 
     /**
      * 调用中通Service（表单提交方式），此方法适用于这样的中通url: http://japi.zto.cn/zto/api_utf8/commonOrder<br>
      * <p>
      * 其中，commonOrder即为 serviceName
-     *
+     * <p>
      * <p>
      * 当请求被中通网关拦截并返回异常时(签名错误、未传必须参数等)，会抛出ZtoException的子类
      *
@@ -97,7 +104,7 @@ public class ZtoApiClient {
         String responseStr = null;
         try {
             Map<String, String> params = buildDeprecatedParamMap(msgType, data);
-            response = httpClientUtil.post(account.getUrl() + "zto/api_utf8/" + serviceName, params);
+            response = httpClientUtil.post(cleanUrl(account.getUrl()) + "zto/api_utf8/" + serviceName, params);
             responseStr = response.body().string();
         } catch (Exception e) {
             throw new ZtoConnectionException(e);
@@ -123,7 +130,7 @@ public class ZtoApiClient {
         String responseStr = null;
         try {
             Map<String, String> params = buildDeprecatedParamMap(msgType, data);
-            response = httpClientUtil.post(account.getUrl() + "gateway.do", params);
+            response = httpClientUtil.post(cleanUrl(account.getUrl()) + "gateway.do", params);
             responseStr = response.body().string();
         } catch (Exception e) {
             throw new ZtoConnectionException(e);
