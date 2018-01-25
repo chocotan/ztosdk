@@ -1,0 +1,35 @@
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+.vs/
+
+
+target/mvn-eclipse-cache.properties
+
+*.class
+target/
+*.iml
+.idea/
+logs/
+.classpath
+.project
+.settings/
+.amateras
+/target*
+*.log*
+/*.jar
+*.war
+*.ear
+
+#*.zip
+*.tar.gz
+*.rar
+
+
+mgr/src/main/resources/static/index.css
+mgr/src/main/resources/static/index.html
+mgr/src/main/resources/static/*.js
+mgr/src/main/resources/ui/node_modules/
+mgr/src/main/resources/ui/dist/*
+mgr/src/main/resources/ui/dist/index.html
+mgr/src/main/resources/ui/dist/index.css
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
