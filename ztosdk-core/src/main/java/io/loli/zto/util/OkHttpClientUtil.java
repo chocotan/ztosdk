@@ -51,12 +51,14 @@ public class OkHttpClientUtil {
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     callback.onNext(response);
+                    callback.onComplete();
                 }
             });
         } else {
             try {
                 Response response = call.execute();
                 callback.onNext(response);
+                callback.onComplete();
             } catch (Throwable e) {
                 callback.onError(e);
             }
