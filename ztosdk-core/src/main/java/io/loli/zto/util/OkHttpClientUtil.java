@@ -3,16 +3,10 @@ package io.loli.zto.util;
 import io.loli.zto.ZtoClientProperties;
 import io.reactivex.ObservableEmitter;
 import lombok.extern.java.Log;
-import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
-import okhttp3.logging.HttpLoggingInterceptor;
-import org.reactivestreams.Subscriber;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 
 /**
  * HttpClient工具类

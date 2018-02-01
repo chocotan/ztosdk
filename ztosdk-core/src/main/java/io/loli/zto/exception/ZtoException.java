@@ -1,8 +1,6 @@
 package io.loli.zto.exception;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
 public class ZtoException extends RuntimeException {
