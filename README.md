@@ -43,7 +43,9 @@ client.api().traceInterfaceNewTraces(new String[]{"12345678901"})
 ### 中通开放平台的接口类型
 中通开放平台中有三种接口类型，分别为 api，msgtype和service
 
-区分方式:
+
+目前中通开放平台上的接口类型大多为`api`，可以通过以下方式区分
+
 1. msgtype: 接口地址是`http://japi.zto.cn/gateway.do`
 2. api: 接口地址是`http://japi.zto.cn/apiName`
 3. service: 接口地址`http://japi.zto.cn/zto/api_utf8/serviceName`
@@ -51,7 +53,6 @@ client.api().traceInterfaceNewTraces(new String[]{"12345678901"})
 
 ZtoApiClient支持三种调用方式，见ZtoApiClient的三个方法msgtype、api和service
 
-目前中通开放平台上的接口类型大多为`msgtype`
 
 `ZtoApiClient.msgtype()`提供了部分接口的调用，分别是`电子面单-获取单号`、`快件轨迹-获取快件轨迹信息`、`快件轨迹-获取快件最新一条`、`电子面单-集包地大头笔接口`
 
