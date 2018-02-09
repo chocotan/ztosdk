@@ -18,7 +18,7 @@
 <dependency>
     <groupId>io.loli.zto</groupId>
     <artifactId>ztosdk-core</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
 </dependency>
 ```
 使用示例
@@ -26,7 +26,7 @@
 ZtoClientProperties ztoClientProperties = new ZtoClientProperties("http://japi.zto.cn/",
     "your companyid","your key",false , 2000L);
 ZtoApiClient client = new ZtoApiClient(ztoClientProperties);
-client.msgtype().traceInterfaceNewTraces(new String[]{"12345678901"})
+client.api().traceInterfaceNewTraces(new String[]{"12345678901"})
     .subscribe(resp->{
         if (resp.isFailure()) {
             System.out.println(resp.getCause().getMessage());
