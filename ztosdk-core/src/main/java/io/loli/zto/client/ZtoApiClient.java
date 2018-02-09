@@ -65,6 +65,23 @@ public class ZtoApiClient {
             return post("traceInterfaceNewTraces", params, map -> map, ZtoTraceResponse.class);
         }
 
+        public Observable<Try<ZtoEBillOrderResponse>> partnerInsertSubmitagent(ZtoEBillOrderRequest request) {
+            Map<String, String> params = new HashMap<>();
+            params.put("msg_type", "SUBMITAGENT");
+            params.put("data", JSON.toJSONString(request));
+            params.put("company_id", ztoClientProperties.getCompanyId());
+            return post("partnerInsertSubmitagent", params, map -> map, ZtoEBillOrderResponse.class);
+        }
+
+        public Observable<Try<ZtoBagAddrMarkResponse>> bagAddrMarkGetmark(ZtoBagAddrMarkRequest request) {
+            Map<String, String> params = new HashMap<>();
+            params.put("msg_type", "GETMARK");
+            params.put("data", JSON.toJSONString(request));
+            params.put("company_id", ztoClientProperties.getCompanyId());
+            return post("bagAddrMarkGetmark", params, map -> map, ZtoBagAddrMarkResponse.class);
+        }
+
+
         public Observable<Try<ZtoTraceResponse>> traceNewest(String[] billCodes) {
             Map<String, String> params = new HashMap<>();
             params.put("msg_type", "LATEST");
@@ -124,6 +141,10 @@ public class ZtoApiClient {
             return post("traceInterface", "LATEST", billCodes, ZtoTraceResponse.class);
         }
 
+        /**
+         * @see ZtoApi#openOrderCreate(ZtoOpenOrderRequest)
+         */
+        @Deprecated
         public Observable<Try<ZtoCommonOrderResponse>> commonOrderCreate(ZtoCommonOrderRequest order) {
             return post("commonOrder", "CRATE", order, ZtoCommonOrderResponse.class);
         }
@@ -166,6 +187,10 @@ public class ZtoApiClient {
             return post("TRACEINTERFACE_LATEST", billCodes, ZtoTraceResponse.class);
         }
 
+        /**
+         * @see ZtoApi#openOrderCreate(ZtoOpenOrderRequest)
+         */
+        @Deprecated
         public Observable<Try<ZtoCommonOrderResponse>> commonOrderCreate(ZtoCommonOrderRequest order) {
             return post("COMMONORDER_CRATE", order, ZtoCommonOrderResponse.class);
         }
