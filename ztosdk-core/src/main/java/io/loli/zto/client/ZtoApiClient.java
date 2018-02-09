@@ -58,17 +58,39 @@ public class ZtoApiClient {
 
     public class ZtoApi {
         public Observable<Try<ZtoTraceResponse>> traceInterfaceNewTraces(String[] billCodes) {
-            return post("traceInterfaceNewTraces", billCodes, ZtoTraceResponse.class);
+            Map<String, String> params = new HashMap<>();
+            params.put("msg_type", "NEW_TRACES");
+            params.put("data", JSON.toJSONString(billCodes));
+            params.put("company_id", ztoClientProperties.getCompanyId());
+            return post("traceInterfaceNewTraces", params, map -> map, ZtoTraceResponse.class);
         }
 
         public Observable<Try<ZtoTraceResponse>> traceNewest(String[] billCodes) {
-            return post("traceInterfaceLatest", billCodes, ZtoTraceResponse.class);
+            Map<String, String> params = new HashMap<>();
+            params.put("msg_type", "LATEST");
+            params.put("data", JSON.toJSONString(billCodes));
+            params.put("company_id", ztoClientProperties.getCompanyId());
+            return post("traceInterfaceLatest", params, map -> map, ZtoTraceResponse.class);
         }
 
         public Observable<Try<ZtoOpenOrderResponse>> openOrderCreate(ZtoOpenOrderRequest request) {
             return post("OpenOrderCreate", request, ZtoOpenOrderResponse.class);
         }
 
+        public Observable<Try<ZtoPriceAndHourResponse>> priceAndHourInterfaceGetHourPrice(ZtoPriceAndHourRequest request) {
+            Map<String, String> params = new HashMap<>();
+            params.put("msg_type", "GET_HOUR_PRICE");
+            params.put("data", JSON.toJSONString(request));
+            params.put("company_id", ztoClientProperties.getCompanyId());
+            return post("priceAndHourInterfaceGetHourPrice", params, map -> map, ZtoPriceAndHourResponse.class);
+        }
+
+
+        public <T> Observable<Try<T>> post(final String api, final Object requestObject,
+                                           final Function<Object, Object> serializer,
+                                           Class<T> responseClass) {
+            return post(api, requestObject, serializer, resp -> JSON.parseObject(resp, responseClass));
+        }
 
         public <T> Observable<Try<T>> post(final String api, final Object requestObject,
                                            Class<T> responseClass) {
