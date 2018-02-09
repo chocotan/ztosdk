@@ -4,7 +4,7 @@
 
     <groupId>io.loli.zto</groupId>
     <artifactId>ztosdk-parent</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.5</version>
     <modules>
         <module>ztosdk-core</module>
         <module>ztosdk-springboot-starter</module>
@@ -48,7 +48,7 @@
         <connection>scm:git:git@github.com:chocotan/ztosdk.git</connection>
         <url>https://github.com/chocotan/ztosdk.git</url>
         <developerConnection>scm:git:git@github.com:chocotan/ztosdk.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>ztosdk-parent-0.0.5</tag>
     </scm>
 
     <distributionManagement>
