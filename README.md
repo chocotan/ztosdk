@@ -18,7 +18,7 @@
 <dependency>
     <groupId>io.loli.zto</groupId>
     <artifactId>ztosdk-core</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
 </dependency>
 ```
 使用示例
@@ -122,12 +122,19 @@ ZtoApiClient的请求方法都返回Observable对象，如果想直接使用返�
 ZtoApiClient的请求方法返回值都用Try包了一层，所以无需自行try-catch
 
 ```java
-Try<YourResponseClass> respTry = respObservable.blockingFirst();
+ZtoPriceAndHourRequest request = new ZtoPriceAndHourRequest();
+request.setDispProv("江苏省");
+request.setDispCity("南通市");
+request.setSendProv("上海");
+request.setSendCity("上海市");
+Try<ZtoPriceAndHourResponse> respTry = apiClient
+                   .api()
+                   .priceAndHourInterfaceGetHourPrice(request)
+                   .blockingFirst();
 if (respTry.isSuccess()) {
-    // 成功时候的处理
+    System.out.println(respTry.get());
 } else {
-    Throwable throwable = resp.getCause();
-    // 异常时候的处理
+    respTry.getCause().printStackTrace();
 }
 ```
 在出现异常时，如果要查看具体的请求日志，请调整日志级别（见上文）
