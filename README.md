@@ -14,6 +14,8 @@
 ### 非spring-boot项目
 
 添加以下maven依赖
+> 0.0.6版本刚上传，需要一个小时时间同步至maven中央仓库
+
 ```xml
 <dependency>
     <groupId>io.loli.zto</groupId>
