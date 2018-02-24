@@ -1,5 +1,5 @@
 ## 中通开放平台SDK
-这是一个调用中通开放平台接口的java SDK（非官方），如果不想用本项目封装的客户端，可以参考wiki：https://github.com/chocotan/ztosdk/wiki/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80%E8%B0%83%E7%94%A8%E4%B8%AD%E9%80%9A%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%88%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83%EF%BC%89
+这是一个调用中通开放平台接口的java SDK（非官方），如果不想用本项目封装的客户端，可以参考wiki：https://git.io/vAVV6
 
 中通开放平台：http://zop.zto.com
 
