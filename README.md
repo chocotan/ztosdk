@@ -1,5 +1,5 @@
 ## 中通开放平台SDK
-这是一个调用中通开放平台接口的java SDK（非官方）
+这是一个调用中通开放平台接口的java SDK（非官方），如果不想用本项目封装的客户端，可以参考wiki：https://git.io/vAVV6
 
 中通开放平台：http://zop.zto.com
 
