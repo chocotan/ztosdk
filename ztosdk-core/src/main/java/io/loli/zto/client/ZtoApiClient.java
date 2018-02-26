@@ -119,7 +119,12 @@ public class ZtoApiClient {
                                               final Function<String, T> deserializer) {
             Consumer<ZtoRequest.ZtoRequestBuilder> buildUrl = b -> b.url(cleanUrl(ztoClientProperties.getUrl()) + api);
             Consumer<ZtoRequest.ZtoRequestBuilder> buildHeadersAndParams = builder -> {
-                Object requestBody = serializer.apply(requestObject);
+                Object requestBody = null;
+                if ((requestObject instanceof String)) {
+                    requestBody = requestObject;
+                } else {
+                    requestBody = serializer.apply(requestObject);
+                }
                 builder.headers(buildHeaderMap(requestBody));
                 if (requestBody instanceof String) {
                     builder.jsonBody((String) requestBody);

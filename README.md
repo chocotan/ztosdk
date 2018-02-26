@@ -62,17 +62,6 @@ ZtoApiClient支持三种调用方式，见ZtoApiClient的三个方法msgtype、a
 3. 快件轨迹-获取快件最新一条
 4. 电子面单-集包地大头笔接口
 
-如果需要调用其他接口或者是需要自己做一些额外的定制，可以参考如下栗子
-```java
-client.msgtype().post("这里是msgtype", dataObject,
-              (Function<Object, Object>) o -> {
-                  // 这里return的是请求参数中data字段的字符串
-                  return JSON.toJSONString(o);
-              }, (Function<String, Object>) s -> {
-                  // 这里的s是http请求返回值字符串
-                  return JSON.parseObject(s, YourResponseClass.class);
-              });
-```
 
 `ZtoApiClient.api()`提供了以下接口调用
 1. 电子面单-获取单号
@@ -81,6 +70,44 @@ client.msgtype().post("这里是msgtype", dataObject,
 4. 电子面单-集包地大头笔接口
 5. 基础信息-获取时效价格
 6. 订单服务-预约寄件-订单创建
+
+### 使用示例
+中通开放平台中，`service`和`msgtype`类型的接口，只支持content-type为`application/x-www-form-urlencoded`
+
+`api`类型的接口，支持`application/x-www-form-urlencoded`和`application/json`两种，目前还不支持xml
+
+
+以下是`api`的一些示例
+
+```java
+// 当传入的请求是字符串的时候，content-type按照application/json处理
+// 返回值的class写String.class，那么将直接会将http请求返回的字符串返回
+ZtoClientProperties ztoClientProperties = new ZtoClientProperties("http://japi.zto.cn/",
+                "your_company_id", "your_key", true, 2000L);
+String requestBodyStr = "{'name':'value'}";
+ZtoApiClient client = new ZtoApiClient(ztoClientProperties);
+Try<String> ztoTraceResponses = client.api()
+        .post("newApiName", requestBodyStr, String.class)
+        .blockingFirst();
+System.out.println(ztoTraceResponses.get());
+```
+
+```java
+// 当直接传入Map以外的数据对象的时候，在http请求发送之前，会将对象转换成json字符串，content-type也会按照application/json处理
+YourDataObject requestBody = new YourDataObject();
+Try<String> ztoTraceResponses = client.api()
+       .post("newApiName", requestBody, String.class)
+       .blockingFirst();
+```
+
+```java
+// 当直接传入Map时候，content-type会按照application/x-www-form-urlencoded处理
+Map<String,String> requestBody = new HashMap<>();
+requestBody.put("name","Tom");
+Try<String> ztoTraceResponses = client.api()
+       .post("newApiName", requestBody, String.class)
+       .blockingFirst();
+```
 
 
 ### spring-boot项目
