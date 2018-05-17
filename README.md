@@ -1,4 +1,6 @@
 ## 中通开放平台SDK
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fchocotan%2Fztosdk.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fchocotan%2Fztosdk?ref=badge_shield)
+
 这是一个调用中通开放平台接口的java SDK（非官方），如果不想用本项目封装的客户端，可以参考wiki：https://git.io/vAVV6
 
 中通开放平台：http://zop.zto.com
@@ -181,3 +183,6 @@ zto.async: true
 
 ## LICENSE
 本项目是MIT协议，请放心fork和使用
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fchocotan%2Fztosdk.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fchocotan%2Fztosdk?ref=badge_large)
